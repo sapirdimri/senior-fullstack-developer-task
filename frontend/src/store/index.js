@@ -1,19 +1,31 @@
-import { createStore } from "vuex"
+import { createStore } from "vuex";
 
 export default createStore({
-	state: {
-		// Define your state here
-	},
-	getters: {
-		// Define your getters here
-	},
-	mutations: {
-		// Define your mutations here
-	},
-	actions: {
-		// Define your actions here
-	},
-	modules: {
-		// Define your modules here
-	},
-})
+  state: {
+    username: "",
+    userRole: [],
+  },
+  getters: {
+    getUsername: (state) => state.username,
+    getUserRoles: (state) => state.userRole,
+  },
+  mutations: {
+    setUserRoles(state, roles) {
+      state.userRole = [...roles];
+    },
+    setUsername(state, username) {
+      state.username = username;
+    },
+  },
+  actions: {
+    updateUserRoles({ commit }, role) {
+      commit("setUserRole", role);
+    },
+    updateUsername({ commit }, username) {
+      commit("setUsername", username);
+    },
+  },
+  modules: {
+    // Define your modules here
+  },
+});
